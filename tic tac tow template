@@ -1,0 +1,147 @@
+
+public class tictactoe {
+
+	public static void main(String[] args) {
+		//display the board
+		do{
+			//user input
+			switch(gameState()){
+			case 1:break;
+			case 2://output for win
+			case 3://output for lose
+			case 4://output for tie
+				
+			}
+		}while();
+		
+		
+	}
+	
+	
+//Assume this game is start by player, X goes first(player), O is computer goes behind.
+	//using Minimax Search Algorithm
+	
+	
+	
+	static final int[][] WIN_STATUS = {
+			{0, 1, 2},
+			{3, 4, 5},
+			{6, 7, 8},
+			{0, 3, 6},
+			{1, 4, 7},
+			{2, 5, 8},
+			{0, 4, 8},
+			{2, 4, 6}
+		};
+	
+	//The gameState function returns the state of the game, 1 for not finish, 2 for win,3 for lose
+	// 4 for tie,5 for double link
+	public static int gameState(){
+		//check if one lose/win
+		for(int[] status:WIN_STATUS){
+					
+			int i ;
+			
+			for(i=1; i<status.length; i++){	
+			//do the check here.(return 3&2);	
+				
+			}
+					
+		}
+		if(){
+			//check if we get a double link
+		}
+		if(){
+			//check if the board is full
+		}
+	else
+		return 4;
+	}
+	
+	
+     public int getNextMove(){
+    	 int next=minimax();
+    	 return next;
+     }
+	
+	public int minimax(){
+			int[] bestMoves = new int[9];
+			int index = 0;	
+			int bestValue = -100000;	
+			// search all the empty cell 
+			for (int pos = 0; pos < 9; pos++) {
+				if (board[pos]== empty) {
+					board[pos].setText("X");//Need to rewrite
+					int value = min(board, depth);// get the min value,need to rewrite,depth=3
+					if (value > bestValue) {//choose the maximum value of all the minimum value
+						bestValue = value;
+						index = 0;
+						bestMoves[index] = pos;
+					} else if (value == bestValue) {
+						index++;
+						bestMoves[index] = pos;
+					}
+					board[pos].setText(" ");
+				}
+		}
+		return bestMoves[index];
+		}
+
+	}
+	// for'O', we want the minmum value
+public int min(board, int depth) {
+	int evalValue = gameState(board);
+boolean isGameOver = (evalValue == WIN || evalValue == LOSE || evalValue == DRAW);
+		if (depth == 0 || isGameOver) {		
+			return evalValue;
+		}
+		int bestValue = 100000;
+		for (int pos = 0; pos < 9; pos++) {
+			if (board[pos].getText().charAt(0) == empty) {
+				board[pos].setText("O");
+				// choose the minmum value
+		bestValue = Math.min(bestValue, max(board, depth - 1));
+			board[pos].setText(" ");
+		}
+	}
+	return evalValue;
+}
+//for 'X', we want the max value
+public int max(JButton[] board, int depth) {
+	int evalValue = gameState(board);
+	boolean isGameOver = (evalValue == WIN || evalValue == LOSE || evalValue == DRAW);
+		if (depth == 0 || isGameOver) {
+	 		return evalValue;
+		}
+		int bestValue = -INFINITY;
+		for (int pos = 0; pos < 9; pos++) {
+			if (board[pos].getText().charAt(0) == empty) {
+				board[pos].setText("X");
+				// choose the maximum value
+		bestValue = Math.max(bestValue, min(board, depth - 1))			board[pos].setText(" ");
+		}
+	}
+	return evalValue;
+}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

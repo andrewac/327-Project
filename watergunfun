@@ -1,0 +1,92 @@
+
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import java.util.Random;
+
+
+public class watergunfun //extends ActionBarActivity 
+{
+
+    
+    public static void main()
+    {
+        int distance = 50;
+        int step = 1;
+        int distanceToGo1 = distance;
+        int distanceToGo2 = distance;
+        //you are distance to go num 1
+        Random rand = new Random();
+        double speed2 = rand.nextDouble()*(2); //speed of the computer varies from 
+        while(distanceToGo1 > 0 || distanceToGo2 > 0)
+        {
+            //listen for a button being pushed
+            // if pushed do this:
+            //if second player listen for him 
+            distanceToGo1 -= 1;
+            
+            //if not second player, skip this part.
+            for(int i = 0; i< speed2; i++)
+            {
+                distanceToGo2 -= 1;
+            }
+        }
+        
+        if (distanceToGo1 <=0 && distanceToGo2<=0)
+        {
+            System.out.println("It's a tie");
+        }
+        else if (distanceToGo1 <= 0)
+        {    
+            System.out.println("Player one wins!");
+        }
+        else if (distanceToGo2 <=0)
+        {
+            System.out.println("Player 2 wins!");
+        }
+            
+        
+    }
+    
+    
+   
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_watergunfun);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_watergunfun, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    
+    
+    
+    //if the user presses a button this function will be called
+    //basically it moves the target up a step
+
+}

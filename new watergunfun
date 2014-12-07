@@ -1,0 +1,113 @@
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import java.util.Random;
+
+
+public class watergunfun extends Activity 
+{
+    ImageButton ib1;
+    ImageButton ib2;
+    private int distance = 50;
+    private int step = 1;
+    private int distanceToGo1;
+    private int distanceToGo2;
+    
+    public static void main()
+    {
+        distanceToGo1 = distance;
+        distanceToGo2 = distance;
+        
+        while(distanceToGo1 > 0 || distanceToGo2 > 0)
+        {
+            player1configurebutton();
+            if (distanceToGo1 <=0 && distanceToGo2<=0)
+            {
+                System.out.println("It's a tie");
+                break;
+            }
+            else if (distanceToGo1 <= 0)
+            {    
+                System.out.println("Player one wins!");
+                break;
+            }
+            else if (distanceToGo2 <=0)
+            {
+                System.out.println("Player 2 wins!");
+                break;
+            }
+        }    
+        
+    }
+    
+    public void player1configurebutton()
+    {
+            ib1.setImageResource(//whatever should be in here R.drawable.xcorner);
+            ib1.setEnabled(true);
+            //moving fish up one step
+            distanceToGo1-=1;
+            computerconfigurebutton();
+            
+    }
+  
+    public void computerconfigurebutton()
+    {  
+        //moving fish2 up one step
+        Random rand = new Random();
+        speed2 = rand.nextDouble()*(2);
+        distanceToGo2 = distanceToGo2-speed;
+            
+    }
+    
+    /*
+  
+    public void player2configurebutton()
+    {
+            ib1.setImageResource(//whatever should be in here R.drawable.xcorner);
+            ib1.setEnabled(true);
+    }
+    */
+  
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_watergunfun);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_watergunfun, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    
+
+    
+    //if the user presses a button this function will be called
+    //basically it moves the target up a step
+
+}
